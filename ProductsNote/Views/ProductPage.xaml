@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductsNote.Views.ProductPage"
+             Title="Добавление продукта">
+    <VerticalStackLayout Spacing="10" Margin="5">
+        <Editor x:Name="NameEditor"
+                Placeholder="Введите название продукта"
+                Text="{Binding Name}"
+                FontSize="15"/>
+
+        <Picker x:Name="GroupPicker" Title = "Группа товаров"
+                FontSize="15"
+                SelectedItem="{Binding Path=Group}">
+            <Picker.Items>
+                <x:String>Бакалейные товары</x:String>
+                <x:String>Вино - водочные изделия</x:String>
+                <x:String>Кондитерские изделия</x:String>
+                <x:String>Молочная продукция</x:String>
+                <x:String>Мясные продукты</x:String>
+                <x:String>Напитки</x:String>
+                <x:String>Овощи, фрукты</x:String>
+                <x:String>Хлебобулочные изделия</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Editor x:Name="PriceEditor" 
+                FontSize="15"
+               Text="{Binding Path=Price}"
+               Placeholder="Введите цену товара"
+               Keyboard="Numeric"/>
+
+        <!--StackLayout Padding="8" Orientation="Horizontal">
+            <CheckBox x:Name="shopCheckBox1" CheckedChanged="CheckBox1_CheckedChanged" />
+            <Label FontSize="16"  Text="'Магнит'" />
+
+            <CheckBox x:Name="shopCheckBox2" CheckedChanged="CheckBox2_CheckedChanged" />
+            <Label FontSize="16"  Text="'Пятёрочка'" />
+
+            <CheckBox x:Name="shopCheckBox2" CheckedChanged="CheckBox2_CheckedChanged" />
+            <Label FontSize="16"  Text="'Лента'" />
+        </StackLayout-->
+
+        <!--Невидимое поле, в которое добавляется вся информация. После она выводится как одна итоговая запись-->
+        <Editor x:Name="TextEditor"
+                IsVisible="false"
+                Placeholder="Enter your note"
+                Text="{Binding Text}"
+                HeightRequest="100" />
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+            <Button Text="Сохранить"
+                    Clicked="SaveButton_Clicked" />
+
+            <Button Grid.Column="1"
+                    Text="Удалить"
+                    Clicked="DeleteButton_Clicked" />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
